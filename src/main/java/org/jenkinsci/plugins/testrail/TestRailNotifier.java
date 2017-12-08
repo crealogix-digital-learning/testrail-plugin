@@ -212,10 +212,14 @@ public class TestRailNotifier extends Notifier {
 	                Float caseTime = testcase.getTime();
 	                String caseComment = null;
 	                Failure caseFailure = testcase.getFailure();
+	                org.jenkinsci.plugins.testrail.JunitResults.Error caseError = testcase.getError();
 	                if (caseFailure != null) {
 	                    caseStatus = CaseStatus.FAILED;
 	                    caseComment = (caseFailure.getMessage() == null) ? caseFailure.getText() : caseFailure.getMessage() + "\n" + caseFailure.getText();
-	                } else if (testcase.getSkipped() != null) {
+	                } else if(caseError != null) {
+						caseStatus = CaseStatus.ERROR;
+	                    caseComment = (caseError.getMessage() == null) ? caseError.getText() : caseError.getMessage() + "\n" + caseError.getText();
+					} else if (testcase.getSkipped() != null) {
 	                    caseStatus = CaseStatus.UNTESTED;
 	                } else {
 	                    caseStatus = CaseStatus.PASSED;

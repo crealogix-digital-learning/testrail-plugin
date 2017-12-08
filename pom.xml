@@ -11,7 +11,7 @@
   <groupId>org.jenkinsci.plugins</groupId>
   <artifactId>testrail</artifactId>
   <name>TestRail Plugin</name>
-  <version>1.0.7-SNAPSHOT</version>
+  <version>1.0.7-CLX</version>
   <licenses>
     <license>
       <name>Apache License, Version 2.0</name>
